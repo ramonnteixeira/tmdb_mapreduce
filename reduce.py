@@ -13,6 +13,7 @@ map = Code("function () {"
            "     emit({name:this.cast[i].name}, 1);"
            "  }" 
            "}")
+
 reduce = Code("function (key, value) {"
               "    return Array.sum(value);"
               "}")
@@ -20,5 +21,6 @@ reduce = Code("function (key, value) {"
 result = movies.map_reduce(map, reduce, "myresults")
 for doc in result.find().sort("value", -1).limit(20):
     print(doc)
+
 
 print(datetime.datetime.now())
